@@ -43,15 +43,15 @@
     <link href="http://yoursite.com/2018/12/29/hello-world/"/>
     <id>http://yoursite.com/2018/12/29/hello-world/</id>
     <published>2018-12-28T17:33:49.303Z</published>
-    <updated>2018-12-30T06:36:14.514Z</updated>
+    <updated>2018-12-30T07:30:40.186Z</updated>
     
-    <content type="html"><![CDATA[<p> 这是我在Hexo发出的第一篇博客，主要是记录一下这个时刻，目前还不知道会不会有后续的文章。<br>大致会上传一些这几年学过的代码和资料，R语言、Perl、Java、H5，或许还会有Python。可能也会转一些学的美工知识。 那么就这样吧，下周要期末考试，还是复习要紧。 </p>]]></content>
+    <content type="html"><![CDATA[<p> 这是我在Hexo发出的第一篇博客，主要是记录一下这个时刻，目前还不知道会不会有后续的文章。<br>大致会上传一些这几年学过的代码和资料，R语言、Perl、Java、H5，或许还会有Python。可能也会转一些学的美工知识。 那么就这样吧，下周要期末考试，还是复习要紧。<br><img src="/2018/12/29/hello-world/code.png" alt=""></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt; 这是我在Hexo发出的第一篇博客，主要是记录一下这个时刻，目前还不知道会不会有后续的文章。&lt;br&gt;大致会上传一些这几年学过的代码和资料，R语言、Perl、Java、H5，或许还会有Python。可能也会转一些学的美工知识。 那么就这样吧，下周要期末考试，还是复习要紧。 &lt;
+        &lt;p&gt; 这是我在Hexo发出的第一篇博客，主要是记录一下这个时刻，目前还不知道会不会有后续的文章。&lt;br&gt;大致会上传一些这几年学过的代码和资料，R语言、Perl、Java、H5，或许还会有Python。可能也会转一些学的美工知识。 那么就这样吧，下周要期末考试，还是复习要紧。&lt;b
       
     
     </summary>
