@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-30T07:41:29.474Z</updated>
+  <updated>2018-12-31T09:30:07.189Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>markdown格式书写规则</title>
+    <link href="http://yoursite.com/2018/12/30/for-md/"/>
+    <id>http://yoursite.com/2018/12/30/for-md/</id>
+    <published>2018-12-30T05:35:23.681Z</published>
+    <updated>2018-12-31T09:30:07.189Z</updated>
+    
+    <content type="html"><![CDATA[<p>Markdown 是一种轻量级的「标记语言」，它的优点很多，广受博客爱好者的喜爱。本文介绍一些md格式的书写规则。</p><a id="more"></a><hr><blockquote><p>那么接下来是干货时间 QAQ</p></blockquote><hr><h1 id="一-标题"><a href="#一-标题" class="headerlink" title="一. 标题"></a>一. 标题</h1><blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3></blockquote><p>#   一级标题<br>##  二级标题<br>### 三级标题</p><h1 id="二-列表"><a href="#二-列表" class="headerlink" title="二. 列表"></a>二. 列表</h1><p>1.无序</p><blockquote><ul><li>这是一个列表</li><li>又是一个列表</li></ul></blockquote><p><code>* 这是一个列表</code><br><code>* 又是一个列表</code></p><p>2.有序</p><blockquote><ol><li>这是一个序列</li><li>又是一个序列</li></ol></blockquote><p><code>1.这是一个序列</code><br><code>2.又是一个序列</code></p><h1 id="三-代码段"><a href="#三-代码段" class="headerlink" title="三. 代码段"></a>三. 代码段</h1><p>三个单引号调出代码块</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(i.love == name)&#123;</span><br><span class="line">    print(i.love + &quot;,I love you&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote><hr><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">if(i.love == name)&#123;                </span><br><span class="line">    print(i.love + &quot;,I love you&quot;); </span><br><span class="line">&#125;  </span><br><span class="line">```</span><br></pre></td></tr></table></figure><h1 id="四-链接"><a href="#四-链接" class="headerlink" title="四. 链接"></a>四. 链接</h1><blockquote><p><a href="http://myqaq.cn" target="_blank" rel="noopener">返回首页</a></p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[返回首页](http://myqaq.cn)</span><br></pre></td></tr></table></figure><h1 id="五-图片"><a href="#五-图片" class="headerlink" title="五. 图片"></a>五. 图片</h1><blockquote><img src="/2018/12/30/for-md/nvwu.jpg" title="This is an example image"></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](for-md/nvwu.jpg)</span><br></pre></td></tr></table></figure><h1 id="六-引用及其嵌套"><a href="#六-引用及其嵌套" class="headerlink" title="六. 引用及其嵌套"></a>六. 引用及其嵌套</h1><blockquote><p>引用</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;引用</span><br></pre></td></tr></table></figure><blockquote><p>父类</p><blockquote><p>子类</p></blockquote></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;父类</span><br><span class="line">&gt;&gt;子类</span><br></pre></td></tr></table></figure><h1 id="七-转义"><a href="#七-转义" class="headerlink" title="七. 转义"></a>七. 转义</h1><p># 转义</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\# 转义</span><br></pre></td></tr></table></figure><h2 id="以上是MarkDown的基础用法，希望对大家有所帮助"><a href="#以上是MarkDown的基础用法，希望对大家有所帮助" class="headerlink" title="以上是MarkDown的基础用法，希望对大家有所帮助"></a>以上是MarkDown的基础用法，希望对大家有所帮助</h2><hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Markdown 是一种轻量级的「标记语言」，它的优点很多，广受博客爱好者的喜爱。本文介绍一些md格式的书写规则。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="个人博客" scheme="http://yoursite.com/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="markdown" scheme="http://yoursite.com/tags/markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
