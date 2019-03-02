@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--
+	作者：李在涵
+	时间：2018-11-5
+	描述：生物信息网站
+	本网站目前对谷歌浏览器兼容性最佳，请尽量使用谷歌浏览器打开
+-->
+<html>
+	
+	<body>
+		<div id="content">
+			
+			<div id="Banner">
+				<!--实现 左右按钮，1234，自动滑动，鼠标停上显示小手不动 暂停。-->
+		        <section id="banner" onmouseover="changeStop()" onmouseout="changeStart()">
+		            <!--以下是我们的banner图-->
+		            <div id="bannerImg">
+		                <img class="img" src="../image/bioinformatics1.jpg"/>
+		                <img class="img" src="../image/bioinformatics2.jpg"/>
+		                <img class="img" src="../image/bioinformatics3.jpg"/>
+		                <img class="img" src="../image/bioinformatics4.jpg"/>
+		                <img class="img" src="../image/bioinformatics1.jpg"/><!--第7张与第一张为同一图片，消除图片切换间断-->
+		            </div>
+		            
+		            <!--以下是我们左下方的banner图按钮-->
+		            <div id="bannerButton">
+		                <button class="Button" onclick="buttonChange(0)">1</button>
+		                <button class="Button" onclick="buttonChange(1)">2</button>
+		                <button class="Button" onclick="buttonChange(2)">3</button>
+		                <button class="Button" onclick="buttonChange(3)">4</button>
+		            </div>
+		            
+		            <!--以下是我们左右两个方向按钮-->
+		            <div id="bannerButtonAside">
+		                <div class="div1" onclick="asideChange(1)">
+		                    <img src="../image/next.png" style="width: 30px;"/>
+		                </div>
+		                <div class="div2" onclick="asideChange(0)">
+		                    <img src="../image/back.png" style="width: 30px;"/>
+		                </div>
+		            </div>
+		        </section>
+			</div>
+			
+			<div id="container">
+				
+				<div id="left_menu">
+					<a href="javascript:void(null);">
+						<img id="left_menu_img" src="../image/OpenMenu.png" style="width: 50px;"/>
+					</a>
+					<div id="left_menu_condect" class="left_menu_condect">
+						<div id="Left">
+							<ul>
+								<li><a href="#jianjie">简介</a></li>
+				                <li><a href="#dingyi">定义</a></li>
+				                <li><a href="#jieduan">经历阶段</a></li>
+				                <li><a href="#fazhan">发展简介</a></li>
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+				
+				<div id="content_in_detail">
+					<!--内容来源于百度百科-->
+					<br /><br /><br />
+					<a id="jianjie">简介</a>
+					<p>生物信息学(Bioinformatics)是研究生物信息的采集、处理、存储、传播，分析和解释等各方面的学科，
+						也是生命科学和计算机科学相结合形成的一门新学科。它通过综合利用生物学、
+						计算机科学和信息技术而揭示大量而复杂的生物数据所赋有的生物学奥秘。</p><br />
+					<img src="../image/th.jpg" />
+					<br /><br />
+					<a id="dingyi">定义</a>
+					<p style=text-indent:0px;>一.生物信息学是一门收集、分析遗传数据以及分发给研究机构的新学科。<br />
+						二.生物信息学特指数据库类的工作，包括持久稳固的在一个稳定的地方提供对数据的支持。<br />
+						三.生物信息学是在大分子方面的概念型的生物学，并且使用了信息学的技术，这包括了从应用数学、计算机科学
+						以及统计学等学科衍生而来各种方法，并以此在大尺度上来理解和组织与生物大分子相关的信息。
+					</p>	<br />
+					<img src="../image/biocloud.png" />
+					<br /><br />
+					<a id="jieduan">经历阶段</a>
+					<p>1.前基因组时代（20世纪90年代前） 这一阶段主要是各种序列比较算法的建立、生物数据库的建立、检索工具的开发以及DNA和蛋白质序列分析等。
+					<br />2.基因组时代（20世纪90年代后至2001年） 这一阶段主要是大规模的基因组测序，基因识别和发现，网络数据库系统地建立和交互界面工具的开发等。
+					<br />3.后基因组时代（2001至今） 随着人类基因组测序工作的完成，各种模式生物基因组测序的完成，
+					生物科学的发展已经进入了后基因组时代，基因组学研究的重心由基因组的结构向基因的功能转移。
+					这种转移的一个重要标志是产生了功能基因组学，而基因组学的前期工作相应地被称为结构基因组学。
+					</p><br />
+					<img src="../image/Genome_book.JPG" />
+					<br /><br />
+					<a id="fazhan">发展简介</a>
+					<p>生物信息学是建立在分子生物学的基础上的，因此，要了解生物信息学，就必须先对分子生物学的发展有一个简单的了解。
+						它的研究目标是揭示"基因组信息结构的复杂性及遗传语言的根本规律"，解释生命的遗传语言。
+						生物信息学已成为整个生命科学发展的重要组成部分，成为生命科学研究的前沿。</p><br />					
+					<img src="../image/bioinformatics-track-topics.png" />
+					<br /><br /><br /><br />
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				time2=0;
+				$("#left_menu_img").click(function(){
+					if(time2==0){
+						$("#left_menu_condect").animate({opacity:'1',},1000);
+						time2=1;
+					}
+					else{
+						$("#left_menu_condect").animate({opacity:'0',},1000);
+						time2=0;
+					}
+				});
+				
+			});
+		</script>
+		
+		<script type="text/javascript">
+	        var bannerImg=document.getElementById("bannerImg");    /*取出img容器的节点*/
+	        var Button=document.getElementsByClassName("Button");    /*取出所有的button按钮*/
+	        var num=0;     /*定义全局变量num,控制banner的切换次序*/
+	        var aaa=0;     /*定义一个全局变量,用来取定时器函数,并在没有鼠标事件的时候清除定时器*/
+	            
+	        /*通过定时器实现banner图的每3000毫秒切换一次的效果的changeStart()函数*/
+	        function changeStart(){
+	                aaa=setInterval(function(){
+	                if (num<=4) {
+	                    bannerImg.style.transition="all 1s linear";
+	                    bannerImg.style.left=(-1000)*(num)+"px";
+	                    num++;
+	                }else{
+	                    bannerImg.style.transition="all 0s linear";        /*消除num=0时,bannerImg移动的过渡效果*/
+	                    num=0;
+	                    bannerImg.style.left=(-1000)*(num)+"px";
+	                    
+	                }
+	                console.log("哈哈哈继续");
+	            },3000)
+	        }
+	        changeStart();
+	        
+	        /*以下是当鼠标悬浮在banner图上时,图片停止自动切换的changeStop()函数*/
+	        function changeStop(){
+	            clearInterval(aaa);
+	            console.log("停止他");
+	        }
+	        
+	        /*以下是点击按钮实现对应banner图切换的change()函数*/
+	        function buttonChange(Num){
+	            num=Num+1;
+	            bannerImg.style.transition="all 0s linear";
+	            bannerImg.style.left=(-1000)*(Num)+"px";
+	        }
+	        
+	        /*以下是点击左右两个按钮实现banner图切换的buttonChange()函数*/
+	        function asideChange(x){   /*通过传递形参x,判断往左/往右切换banner图*/
+	            if (num!=4&&x==1) {
+	                num++;
+	            }else if(num==4&&x==1){
+	                num=0;
+	            }else if(num!=0&&x==0){
+	                num--;
+	            }
+	            else if(num==0&&x==0){
+	                num=3;
+	            }
+	            bannerImg.style.transition="all 0s linear";
+	            bannerImg.style.left=(-1000)*(num)+"px";
+	        }
+	    </script>
+	
+	</body>
+</html>

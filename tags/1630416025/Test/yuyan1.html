@@ -1,0 +1,195 @@
+				<!DOCTYPE html>
+<!--
+	作者：李在涵
+	时间：2018-11-5
+	描述：生物信息网站
+	本网站目前对谷歌浏览器兼容性最佳，请尽量使用谷歌浏览器打开
+-->
+<html>
+	
+	<body>
+		<div id="content">
+			
+			<div id="Banner">
+				<!--实现 左右按钮，1234，自动滑动，鼠标停上显示小手不动 暂停。-->
+		        <section id="banner" onmouseover="changeStop()" onmouseout="changeStart()">
+		            <!--以下是我们的banner图-->
+		            <div id="bannerImg">
+		                <img class="img" src="../image/bioinformatics1.jpg"/>
+		                <img class="img" src="../image/bioinformatics2.jpg"/>
+		                <img class="img" src="../image/bioinformatics3.jpg"/>
+		                <img class="img" src="../image/bioinformatics4.jpg"/>
+		                <img class="img" src="../image/bioinformatics1.jpg"/><!--第7张与第一张为同一图片，消除图片切换间断-->
+		            </div>
+		            
+		            <!--以下是我们左下方的banner图按钮-->
+		            <div id="bannerButton">
+		                <button class="Button" onclick="buttonChange(0)">1</button>
+		                <button class="Button" onclick="buttonChange(1)">2</button>
+		                <button class="Button" onclick="buttonChange(2)">3</button>
+		                <button class="Button" onclick="buttonChange(3)">4</button>
+		            </div>
+		            
+		            <!--以下是我们左右两个方向按钮-->
+		            <div id="bannerButtonAside">
+		                <div class="div1" onclick="asideChange(1)">
+		                    <img src="../image/next.png" style="width: 30px;"/>
+		                </div>
+		                <div class="div2" onclick="asideChange(0)">
+		                    <img src="../image/back.png" style="width: 30px;"/>
+		                </div>
+		            </div>
+		        </section>
+			</div>
+			
+			<div id="container">
+				
+				<div id="content_in_detail">
+					<br />
+					<div style="position: absolute;left: 35%;">
+						<h2 >
+							在生物信息学习过程中，我们主要涉及以下几种语言
+						</h2>
+					</div>
+						<br /><br /><br />
+					<details>
+						<summary>
+							R语言<br />
+						</summary>
+						<p><br />
+							R是用于统计分析、绘图的语言和操作环境。是一个用于统计计算和统计制图的优秀工具。
+							在生物信息学领域有着很大的应用。<br />
+							Bioconductor是建立在R语言环境上的，用于生物信息数据的注释，处理，分析及可视化工具包的总集。
+							由一系列的R扩展包组成。当前主要是应用在基因芯片和NGS测序数据分析两个领域。<br />
+						</p>
+						<div id="img_in_content">
+							<a href="http://www.bioconductor.org/" target="_blank">
+								<img src="../image/bioconductor.jpg"/>
+							</a>
+						</div>
+					</details>
+					<br /><br /><br />
+					<details>
+						<summary>
+							Java语言<br />
+						</summary>
+						<p><br />
+							Java是现阶段最为流行的语言之一，以其良好的封装性和可实现性著称。现阶段移动端app多由Java编写。<br />
+						</p>
+						<div id="img_in_content">
+							<a href="https://www.oracle.com/" target="_blank">
+								<img src="../image/java_tea.jpg"/>
+							</a>
+						</div>
+							
+					</details>
+					<br /><br /><br />
+					<details>
+						<summary>
+							Perl语言<br />
+						</summary>
+						<p><br />
+							Perl语言是一个功能十分丰富的编程语言，可以比较方便的进行大规模信息处理的编程语言，许多生物信息相关任务都由Perl语言完成。<br />
+						</p>
+						<div id="img_in_content">
+							<a href="https://www.oracle.com/" target="_blank">
+								<img src="../image/Perl_book.jpg"/>
+							</a>
+						</div>
+							
+					</details>
+					<br /><br /><br />
+					
+					<details>
+						<summary>
+							SQL语言<br />
+						</summary>
+						<p><br />
+							SQL语言，即结构化查询语言。SQL是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统。<br />
+						</p>
+						<div id="img_in_content">
+							<a href="http://www.w3school.com.cn/sql/index.asp" target="_blank">
+								<img src="../image/sql.jpg"/>
+							</a>
+						</div>
+					</details>
+					<br /><br /><br />
+					
+					<details>
+						<summary id="web">
+							web前端开发语言<br />
+						</summary>
+						<p><br />
+							网站使用HTML、CSS、Javascript这三种开发语言制作而成。HTML用于将文本传输在网上，CSS用于修饰网页，Javascript用来为网页添加各式各样的动态功能,为用户提供更流畅美观的浏览效果。<br />
+						</p>
+						<div id="img_in_content">
+							<a href="http://www.w3school.com.cn/h.asp" target="_blank">
+								<img src="../image/html_js.jpg"/>
+							</a>
+						</div>
+							
+					</details>
+					<br /><br /><br />
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		
+		<script type="text/javascript">
+	        var bannerImg=document.getElementById("bannerImg");    /*取出img容器的节点*/
+	        var Button=document.getElementsByClassName("Button");    /*取出所有的button按钮*/
+	        var num=0;     /*定义全局变量num,控制banner的切换次序*/
+	        var aaa=0;     /*定义一个全局变量,用来取定时器函数,并在没有鼠标事件的时候清除定时器*/
+	            
+	        /*通过定时器实现banner图的每3000毫秒切换一次的效果的changeStart()函数*/
+	        function changeStart(){
+	                aaa=setInterval(function(){
+	                if (num<=4) {
+	                    bannerImg.style.transition="all 1s linear";
+	                    bannerImg.style.left=(-1000)*(num)+"px";
+	                    num++;
+	                }else{
+	                    bannerImg.style.transition="all 0s linear";        /*消除num=0时,bannerImg移动的过渡效果*/
+	                    num=0;
+	                    bannerImg.style.left=(-1000)*(num)+"px";
+	                    
+	                }
+	            },3000)
+	        }
+	        changeStart();
+	        
+	        /*以下是当鼠标悬浮在banner图上时,图片停止自动切换的changeStop()函数*/
+	        function changeStop(){
+	            clearInterval(aaa);    
+	            console.log("停止他");
+	        }
+	        
+	        /*以下是点击按钮实现对应banner图切换的change()函数*/
+	        function buttonChange(Num){
+	            num=Num+1;
+	            bannerImg.style.transition="all 0s linear";
+	            bannerImg.style.left=(-1000)*(Num)+"px";
+	        }
+	        
+	        /*以下是点击左右两个按钮实现banner图切换的buttonChange()函数*/
+	        function asideChange(x){   /*通过传递形参x,判断往左/往右切换banner图*/
+	            if (num!=4&&x==1) {
+	                num++;
+	            }else if(num==4&&x==1){
+	                num=0;
+	            }else if(num!=0&&x==0){
+	                num--;
+	            }
+	            else if(num==0&&x==0){
+	                num=3;
+	            }
+	            bannerImg.style.transition="all 0s linear";
+	            bannerImg.style.left=(-1000)*(num)+"px";
+	        }
+	    </script>
+	
+	</body>
+</html>
+			

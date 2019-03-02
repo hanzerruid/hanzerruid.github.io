@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="双语之城的博客">
+    <title>R语言线性回归总结 - 双语之城的博客</title>
+    <meta name="author" content="双语之城">
+    
+    
+        <link rel="icon" href="http://myqaq.cn/assets/images/timg.jpg">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"双语之城","sameAs":["https://github.com/hanzerruid/hanzerruid.github.io"],"image":"auther.jpg"},"articleBody":"R语言是一种十分方便的统计学编程语言，本文主要介绍通过R语言进行线性回归，并列举了几个R语言在线性回归中的应用。\n\n\n\n那么接下来是干货时间 QAQ\n\n\n线性回归计算分为以下几点一、判断是否符合线性回归，并求出回归方程lm.sol + summary(lm.sol)计算各项的Pr值(即t检验的p值)，Pr&lt; 0.05表示该项系数与t检验默认值(mu=0)之间存在显著差异（即系数显著不为零），此时符合回归，Estimate对应的值为该项系数\n二、预测1lm.pred&lt;-predict(lm.sol, data.frame(x = 0.16), interval=&quot;prediction&quot;, level=0.95)\nFor example输出的三个值分别为预估值，区间下限和区间上限\n三、查找偏差值12y.res&lt;-resid(lm.sol)plot(y.res)\n四、逐步回归123lm.step&lt;-step(lm.sol)drop1(lm.step)  #查看每项的AICsummary(lm.step)\n五、画拟合曲线123x&lt;-seq(min(X1), max(X1), len=200)y&lt;-predict(lm2.sol, data.frame(X1=x))plot(Y~X1); lines(x,y)\n六、残差图1234567y.res&lt;-resid(lm.sol)y.rst&lt;-rstandard(lm.sol) #标准化y.fit&lt;-predict(lm.sol)#普通残差图plot(y.res~y.fit)#标准化残差图plot(y.rst~y.fit)\n漏斗形-&gt;异方差  &amp;&amp;  无规律—&gt;同方差(正常情况)\n\n12345678x&lt;-scan()5.1 1907 3.5 1287 7.1 2700 6.2 2373 8.8 3260 7.8 3000 4.5 1947 5.6 2273 8.0 3113 6.4 2493dim(x)&lt;-c(2,10)x&lt;-t(x)colnames(x)&lt;-c(&quot;X&quot;,&quot;Y&quot;)x&lt;-as.data.frame(x)plot(x$X,x$Y)\n(1)呈线性关系12lm.sol&lt;-lm(Y~X,data=x)summary(lm.sol)\n\n(2 &amp; 3)y=364.18x+140.95回归数据的显著性检验是指看Pr值是否&lt;0.05,Pr&lt;0.05时为显著的X的系数显著，常数项系数不显著abline(lm.sol)(4)已知其中部分数据，预测剩余值用predictpredict(lm对象,新数据的data.frame ,interval=”prediction”)12new&lt;-data.frame(X=7)lm.pred&lt;-predict(lm.sol,new,interval=&quot;prediction&quot;)\n#Y(7)= 2690.227, [2454.971,2925.484]\n\n\n\n(1)1234567891011x&lt;-scan()0.4 52 158 64 0.4 23 163 60 3.1 19 37 71 0.6 34 157 61 4.7 24 59 54 1.7 65 123 77 9.4 44 46 81 10.1 31 117 93 11.6 29 173 93 12.6 58 112 51 10.9 37 111 76 23.1 46 114 96 23.1 50 134 7721.6 44 73 93 23.1 56 168 95 1.9 36 143 54 26.8 58 202 168 29.9 51 124 99dim(x)&lt;-c(4,18)x&lt;-t(x)colnames(x)&lt;-c(&quot;x1&quot;,&quot;x2&quot;,&quot;x3&quot;,&quot;y&quot;)x&lt;-data.frame(x)lm.sol&lt;-lm(y~x1+x2+x3,data=x)summary(lm.sol)\n\n(2)Pr&lt;0.05表示显著x1和常数项显著,其他不显著(3)lm.step&lt;-step(lm.sol)\n#x2被删去summary(lm.step)12lm.final&lt;-lm(y~x1,data = x)summary(lm.final)\n\np&lt;0.05可以,y = 1.84x + 59.25\n\n\n(1)1234567891011x&lt;-scan()1 0.6 1 1.6 1 0.5 1 1.2 2 2.0 2 1.3 2 2.5 3 2.2 3 2.4 3 1.2 4 3.5 4 4.1 4 5.1 5 5.7 6 3.4 6 9.7 6 8.6 7 4.0 7 5.5 7 10.5 8 17.5 8 13.4 8 4.5 9 30.4 11 12.4 12 13.4 12 26.2 12 7.4dim(x)&lt;-c(2,28)x&lt;-t(x)colnames(x)&lt;-c(&quot;x&quot;,&quot;y&quot;)x&lt;-data.frame(x)plot(x$x,x$y)lm.sol&lt;-lm(y~x,data=x)summary(lm.sol)\n\nabline(lm.sol)\n(2)Pr的值为T检验的P值,F-statistic的p-value表示F检验的p值,两者都是&lt; 0.05时通过Pr常数项&gt;0.05,x的&lt; 0.05,故常数项没通过t检验,x项通过了F-statistic的p-value&lt; 0.05,通过了F检验(3)12y.res&lt;-resid(lm.sol); y.fit&lt;-predict(lm.sol)plot(y.res~y.fit)\n\n12y.rst&lt;-rstandard(lm.sol)plot(y.rst~y.fit)\n\n喇叭形，异方差的(4)123lm2&lt;-lm(y~x,data=x)lm2_sq&lt;-update(lm2,sqrt(.)~.)summary(lm2_sq)\n\nR-squared还较小，但残差明显变小了（0.7206）\n\n\n\ntoothpaste&lt;-data.frame(   X1=c(-0.05, 0.25,0.60,0,   0.25,0.20, 0.15,0.05,-0.15, 0.15,         0.20, 0.10,0.40,0.45,0.35,0.30, 0.50,0.50, 0.40,-0.05,        -0.05,-0.10,0.20,0.10,0.50,0.60,-0.05,0,    0.05, 0.55),   X2=c( 5.50,6.75,7.25,5.50,7.00,6.50,6.75,5.25,5.25,6.00,         6.50,6.25,7.00,6.90,6.80,6.80,7.10,7.00,6.80,6.50,         6.25,6.00,6.50,7.00,6.80,6.80,6.50,5.75,5.80,6.80),   Y =c( 7.38,8.51,9.52,7.50,9.33,8.28,8.75,7.87,7.10,8.00,         7.89,8.15,9.10,8.86,8.90,8.87,9.26,9.00,8.75,7.95,         7.65,7.27,8.00,8.50,8.75,9.21,8.27,7.67,7.93,9.26))lm.sol&lt;-lm(Y~X1+X2,data = toothpaste)summary(lm.sol)\n– To  Be  Continued –\n&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0.5&quot;&gt;\n","dateCreated":"2019-01-10T16:24:18+08:00","dateModified":"2019-03-02T22:00:38+08:00","datePublished":"2019-01-10T16:24:18+08:00","description":"R语言是一种十分方便的统计学编程语言，本文主要介绍通过R语言进行线性回归，并列举了几个R语言在线性回归中的应用。","headline":"R语言线性回归总结","image":[null,"R.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://myqaq.cn/2019/01/10/R-Linear-regression/"},"publisher":{"@type":"Organization","name":"双语之城","sameAs":["https://github.com/hanzerruid/hanzerruid.github.io"],"image":"auther.jpg","logo":{"@type":"ImageObject","url":"auther.jpg"}},"url":"http://myqaq.cn/2019/01/10/R-Linear-regression/","keywords":"R语言, 线性回归","thumbnailUrl":"R.jpg"}</script>
+    <meta name="description" content="R语言是一种十分方便的统计学编程语言，本文主要介绍通过R语言进行线性回归，并列举了几个R语言在线性回归中的应用。">
+<meta name="keywords" content="R语言,线性回归">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="R语言线性回归总结">
+<meta property="og:url" content="http://myqaq.cn/2019/01/10/R-Linear-regression/index.html">
+<meta property="og:site_name" content="双语之城的博客">
+<meta property="og:description" content="R语言是一种十分方便的统计学编程语言，本文主要介绍通过R语言进行线性回归，并列举了几个R语言在线性回归中的应用。">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image005.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image001.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Rplot.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Run1.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Rplot1.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image006.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image007.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Run2.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Run3.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Run4.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Run5.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image008.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Run6.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image009.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image010.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image011.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/Run7.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image012.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image013.png">
+<meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/R.jpg">
+<meta property="og:updated_time" content="2019-03-02T14:00:38.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R语言线性回归总结">
+<meta name="twitter:description" content="R语言是一种十分方便的统计学编程语言，本文主要介绍通过R语言进行线性回归，并列举了几个R语言在线性回归中的应用。">
+<meta name="twitter:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/image005.png">
+<meta name="twitter:creator" content="@zodiacruid">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://myqaq.cn/assets/images/auther.jpg"/>
+    
+    
+    
+        <meta property="og:image" content="http://myqaq.cn/2019/01/10/R-Linear-regression/R.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://myqaq.cn/2019/01/10/R-Linear-regression/R.jpg" />
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-c4ozcsklz4kht2pebhp44xorvyverh23toayhn7i6ubrpyedak24hv1v0hyd.min.css">
+    <!--STYLES END-->
+    
+
+    
+            
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">双语之城的博客</a>
+    </div>
+    
+        
+            <a class="header-right-icon " href="#about">
+        
+        
+            <i class="question fa-lg"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/auther.jpg" alt="作者的图片">
+                </a>
+                <h4 class="sidebar-profile-name">双语之城</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="首页">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">首页</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="标签">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">标签</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="归档">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">归档</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/hanzerruid/hanzerruid.github.io" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-center
+                    post-header-cover--partial" style="background-image:url('/2019/01/10/R-Linear-regression/R.jpg');" data-behavior="5">
+            
+                <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title">
+            R语言线性回归总结
+        </h1>
+    
+    
+</div>
+
+            
+        </div>
+
+            <div id="main" data-behavior="5"
+                 class="hasCover
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+    <div class="post-content markdown"> 
+        <div class="main-content-wrap"> 
+            <p>R语言是一种十分方便的统计学编程语言，本文主要介绍通过R语言进行<em>线性回归</em>，并列举了几个R语言在<em>线性回归</em>中的应用。</p>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>那么接下来是干货时间 QAQ</p>
+</blockquote>
+<hr>
+<h4 id="线性回归计算分为以下几点"><a href="#线性回归计算分为以下几点" class="headerlink" title="线性回归计算分为以下几点"></a>线性回归计算分为以下几点</h4><p>一、判断是否符合线性回归，并求出回归方程<br><code>lm.sol</code> + <code>summary(lm.sol)</code>计算各项的Pr值(即t检验的p值)，<br>Pr&lt; 0.05表示该项系数与t检验默认值(mu=0)之间存在显著差异（即系数显著不为零），此时符合回归，Estimate对应的值为该项系数</p>
+<p>二、预测<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lm.pred&lt;-predict(lm.sol, data.frame(x = 0.16), interval=&quot;prediction&quot;, level=0.95)</span><br></pre></td></tr></table></figure></p>
+<p>For example<img src="/2019/01/10/R-Linear-regression/image005.png" title="残差"><br>输出的三个值分别为预估值，区间下限和区间上限</p>
+<p>三、查找偏差值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y.res&lt;-resid(lm.sol)</span><br><span class="line">plot(y.res)</span><br></pre></td></tr></table></figure></p>
+<p>四、逐步回归<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lm.step&lt;-step(lm.sol)</span><br><span class="line">drop1(lm.step)  #查看每项的AIC</span><br><span class="line">summary(lm.step)</span><br></pre></td></tr></table></figure></p>
+<p>五、画拟合曲线<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x&lt;-seq(min(X1), max(X1), len=200)</span><br><span class="line">y&lt;-predict(lm2.sol, data.frame(X1=x))</span><br><span class="line">plot(Y~X1); lines(x,y)</span><br></pre></td></tr></table></figure></p>
+<p>六、残差图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">y.res&lt;-resid(lm.sol)</span><br><span class="line">y.rst&lt;-rstandard(lm.sol) #标准化</span><br><span class="line">y.fit&lt;-predict(lm.sol)</span><br><span class="line">#普通残差图</span><br><span class="line">plot(y.res~y.fit)</span><br><span class="line">#标准化残差图</span><br><span class="line">plot(y.rst~y.fit)</span><br></pre></td></tr></table></figure></p>
+<p>漏斗形-&gt;异方差  &amp;&amp;  无规律—&gt;同方差(正常情况)</p>
+<img src="/2019/01/10/R-Linear-regression/image001.png" title="ex1">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x&lt;-scan()</span><br><span class="line">5.1 1907 3.5 1287 7.1 2700 6.2 2373 8.8 3260 7.8 3000 4.5 1947 5.6 2273 8.0 3113 6.4 2493</span><br><span class="line"></span><br><span class="line">dim(x)&lt;-c(2,10)</span><br><span class="line">x&lt;-t(x)</span><br><span class="line">colnames(x)&lt;-c(&quot;X&quot;,&quot;Y&quot;)</span><br><span class="line">x&lt;-as.data.frame(x)</span><br><span class="line">plot(x$X,x$Y)</span><br></pre></td></tr></table></figure>
+<p>(1)<img src="/2019/01/10/R-Linear-regression/Rplot.png" title="ex1"><br>呈线性关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lm.sol&lt;-lm(Y~X,data=x)</span><br><span class="line">summary(lm.sol)</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/01/10/R-Linear-regression/Run1.png" title="ex1">
+<p>(2 &amp; 3)<br>y=364.18x+140.95<br>回归数据的显著性检验是指看Pr值是否&lt;0.05,Pr&lt;0.05时为显著的<br>X的系数显著，常数项系数不显著<br><code>abline(lm.sol)</code><br><img src="/2019/01/10/R-Linear-regression/Rplot1.png" title="ex1"><br>(4)<br>已知其中部分数据，预测剩余值用predict<br>predict(lm对象,新数据的data.frame ,interval=”prediction”)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new&lt;-data.frame(X=7)</span><br><span class="line">lm.pred&lt;-predict(lm.sol,new,interval=&quot;prediction&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>#Y(7)= 2690.227, [2454.971,2925.484]</p>
+<hr>
+<img src="/2019/01/10/R-Linear-regression/image006.png" title="ex2">
+<img src="/2019/01/10/R-Linear-regression/image007.png" title="ex2">
+<p>(1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x&lt;-scan()</span><br><span class="line">0.4 52 158 64 0.4 23 163 60 3.1 19 37 71 0.6 34 157 61 4.7 24 59 54 1.7 65 123 77 9.4 44 46 81 </span><br><span class="line">10.1 31 117 93 11.6 29 173 93 12.6 58 112 51 10.9 37 111 76 23.1 46 114 96 23.1 50 134 77</span><br><span class="line">21.6 44 73 93 23.1 56 168 95 1.9 36 143 54 26.8 58 202 168 29.9 51 124 99</span><br><span class="line"></span><br><span class="line">dim(x)&lt;-c(4,18)</span><br><span class="line">x&lt;-t(x)</span><br><span class="line">colnames(x)&lt;-c(&quot;x1&quot;,&quot;x2&quot;,&quot;x3&quot;,&quot;y&quot;)</span><br><span class="line">x&lt;-data.frame(x)</span><br><span class="line">lm.sol&lt;-lm(y~x1+x2+x3,data=x)</span><br><span class="line">summary(lm.sol)</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/01/10/R-Linear-regression/Run2.png" title="ex2">
+<p>(2)<br>Pr&lt;0.05表示显著<br>x1和常数项显著,其他不显著<br>(3)<br><code>lm.step&lt;-step(lm.sol)</code><br><img src="/2019/01/10/R-Linear-regression/Run3.png" title="ex2"></p>
+<p>#x2被删去<br><code>summary(lm.step)</code><br><img src="/2019/01/10/R-Linear-regression/Run4.png" title="ex2"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lm.final&lt;-lm(y~x1,data = x)</span><br><span class="line">summary(lm.final)</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/01/10/R-Linear-regression/Run5.png" title="ex2">
+<p>p&lt;0.05<br>可以,y = 1.84x + 59.25</p>
+<hr>
+<img src="/2019/01/10/R-Linear-regression/image008.png" title="ex3">
+<p>(1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x&lt;-scan()</span><br><span class="line">1 0.6 1 1.6 1 0.5 1 1.2 2 2.0 2 1.3 2 2.5 3 2.2 3 2.4 3 1.2 4 3.5 4 4.1 4 5.1 5 5.7 6 3.4 </span><br><span class="line">6 9.7 6 8.6 7 4.0 7 5.5 7 10.5 8 17.5 8 13.4 8 4.5 9 30.4 11 12.4 12 13.4 12 26.2 12 7.4</span><br><span class="line"></span><br><span class="line">dim(x)&lt;-c(2,28)</span><br><span class="line">x&lt;-t(x)</span><br><span class="line">colnames(x)&lt;-c(&quot;x&quot;,&quot;y&quot;)</span><br><span class="line">x&lt;-data.frame(x)</span><br><span class="line">plot(x$x,x$y)</span><br><span class="line">lm.sol&lt;-lm(y~x,data=x)</span><br><span class="line">summary(lm.sol)</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/01/10/R-Linear-regression/Run6.png" title="ex3">
+<p><code>abline(lm.sol)</code><br><img src="/2019/01/10/R-Linear-regression/image009.png" title="ex3"></p>
+<p>(2)<br>Pr的值为T检验的P值,F-statistic的p-value表示F检验的p值,两者都是&lt; 0.05时通过<br>Pr常数项&gt;0.05,x的&lt; 0.05,故常数项没通过t检验,x项通过了<br>F-statistic的p-value&lt; 0.05,通过了F检验<br>(3)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y.res&lt;-resid(lm.sol); y.fit&lt;-predict(lm.sol)</span><br><span class="line">plot(y.res~y.fit)</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/01/10/R-Linear-regression/image010.png" title="ex3">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y.rst&lt;-rstandard(lm.sol)</span><br><span class="line">plot(y.rst~y.fit)</span><br></pre></td></tr></table></figure>
+<img src="/2019/01/10/R-Linear-regression/image011.png" title="ex3">
+<p>喇叭形，异方差的<br>(4)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lm2&lt;-lm(y~x,data=x)</span><br><span class="line">lm2_sq&lt;-update(lm2,sqrt(.)~.)</span><br><span class="line">summary(lm2_sq)</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/01/10/R-Linear-regression/Run7.png" title="ex3">
+<p>R-squared还较小，但残差明显变小了（0.7206）</p>
+<hr>
+<img src="/2019/01/10/R-Linear-regression/image012.png" title="ex3">
+<img src="/2019/01/10/R-Linear-regression/image013.png" title="ex3">
+<p>toothpaste&lt;-data.frame(<br>   X1=c(-0.05, 0.25,0.60,0,   0.25,0.20, 0.15,0.05,-0.15, 0.15,<br>         0.20, 0.10,0.40,0.45,0.35,0.30, 0.50,0.50, 0.40,-0.05,<br>        -0.05,-0.10,0.20,0.10,0.50,0.60,-0.05,0,    0.05, 0.55),<br>   X2=c( 5.50,6.75,7.25,5.50,7.00,6.50,6.75,5.25,5.25,6.00,<br>         6.50,6.25,7.00,6.90,6.80,6.80,7.10,7.00,6.80,6.50,<br>         6.25,6.00,6.50,7.00,6.80,6.80,6.50,5.75,5.80,6.80),<br>   Y =c( 7.38,8.51,9.52,7.50,9.33,8.28,8.75,7.87,7.10,8.00,<br>         7.89,8.15,9.10,8.86,8.90,8.87,9.26,9.00,8.75,7.95,<br>         7.65,7.27,8.00,8.50,8.75,9.21,8.27,7.67,7.93,9.26)<br>)<br>lm.sol&lt;-lm(Y~X1+X2,data = toothpaste)<br>summary(lm.sol)</p>
+<h2 id="–-To-Be-Continued-–"><a href="#–-To-Be-Continued-–" class="headerlink" title="– To  Be  Continued –"></a><em>– To  Be  Continued –</em></h2><img src="/2019/01/10/R-Linear-regression/R.jpg" title="ex3">
+<p><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0.5&quot;&gt;</code></p>
+ 
+            
+ 
+            <!-- 添加的部分 --> 
+            <!-- copyright --> 
+             <!-- copyright --> 
+        </div> 
+    </div>
+
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/R语言/">R语言</a> <a class="tag tag--primary tag--small t-link" href="/tags/线性回归/">线性回归</a>
+
+            </div>
+        
+        
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 双语之城. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/auther.jpg" alt="作者的图片">
+        
+            <h4 id="about-card-name">双语之城</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/timg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-dbd16rvloemmuxdzniplmnxxvwoz24eya9wol0b7vvmlokgqsjivmb8dnscy.min.js"></script>
+<!--SCRIPTS END-->
+
+
+
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+	作者：李在涵
+	时间：2018-11-5
+	描述：生物信息网站
+	本网站目前对谷歌浏览器兼容性最佳，请尽量使用谷歌浏览器打开
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="https://www.ncbi.nlm.nih.gov/core/jig/1.14.8/js/jig.min.js">
+		</script>
+	</head>
+	<body>
+		<div id="content">
+			<div class="search">
+				<h2 align="center" style="color: #0785D1;">Search In NCBI</h2>
+				<br />
+			    <form method="get" action="/gquery/" id="searchform"
+			          autocomplete="off" target="_blank">
+			        <div class="search_form">
+			            <label for="database" class="offscreen_noflow">Search
+			                database</label>
+			
+			            <select id="database" style="width: 390px;height: 40px;">
+			            	<option value="gquery">All Databases</option><option value="assembly">Assembly</option><option value="biocollections">Biocollections</option><option value="bioproject">BioProject</option><option value="biosample">BioSample</option><option value="biosystems">BioSystems</option><option value="books">Books</option><option value="clinvar">ClinVar</option><option value="clone">Clone</option><option value="cdd">Conserved Domains</option><option value="gap">dbGaP</option><option value="dbvar">dbVar</option><option value="nucest">EST</option><option value="gene">Gene</option><option value="genome">Genome</option><option value="gds">GEO DataSets</option><option value="geoprofiles">GEO Profiles</option><option value="nucgss">GSS</option><option value="gtr">GTR</option><option value="homologene">HomoloGene</option><option value="ipg">Identical Protein Groups</option><option data-ac_dict="medgen_disease_name" value="medgen">MedGen</option><option data-ac_dict="mesh_suggestions" value="mesh">MeSH</option><option value="ncbisearch">NCBI Web Site</option><option value="nlmcatalog">NLM Catalog</option><option value="nuccore">Nucleotide</option><option value="omim">OMIM</option><option value="pmc">PMC</option><option value="popset">PopSet</option><option value="probe">Probe</option><option value="protein">Protein</option><option value="proteinclusters">Protein Clusters</option><option value="pcassay">PubChem BioAssay</option><option value="pccompound">PubChem Compound</option><option value="pcsubstance">PubChem Substance</option><option data-ac_dict="pm_related_queries_2" value="pubmed">PubMed</option><option value="snp">SNP</option><option value="sparcle">Sparcle</option><option value="sra">SRA</option><option value="structure">Structure</option><option value="taxonomy">Taxonomy</option><option value="toolkit">ToolKit</option><option value="toolkitall">ToolKitAll</option><option value="toolkitbookgh">ToolKitBookgh</option><option value="unigene">UniGene</option>
+			            </select>
+			
+			            <div class="nowrap">
+			                <label for="term" class="offscreen_noflow" accesskey="/">
+			                	<br />Search term
+			                </label>
+			                <div class="nowrap">
+			                    <input type="text" name="term" id="term"
+			   title="Search All Databases" value=""
+			   class="jig-ncbiautocomplete"
+			   data-jigconfig="isEnabled:false,disableUrl:'NcbiSearchBarAutoComplCtrl'"
+			   autocomplete="off"
+			   data-sbconfig="ds:'no',pjs:'no',afs:'yes'"
+			   aria-haspopup="true" aria-autocomplete="list"
+			   role="textbox"/  style="width: 390px;height: 40px;">
+			                </div><br />
+			                <button id="search" type="submit"
+			class="button_search nowrap" cmd="go" style="width: 390px;height: 40px;">
+								Search
+			                </button>
+			                <a id="to_adv_search" href="#" style="color: #0000FF;">advance search</a>
+			            </div>
+			        </div>
+			    </form>
+			</div>
+		</div>
+		
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+		  $("#to_adv_search").click(function(){
+		    $("#content").load("Entrez2.html");
+		  })
+		})
+		</script>
+		
+	    <script type="text/javascript">
+	        jQuery(document).ready(function ($) {
+	            // Manage database changes
+	            function update_db() {
+	                var db = $("#database")
+	                db.closest("form").attr("action", "https://www.ncbi.nlm.nih.gov/" + db.val() + "/");
+	            }
+	
+	            $("#database").change(update_db);
+	            $("#term").blur(update_db).keypress(update_db);
+	            $("#search").click(update_db).keypress(update_db);
+	        });
+	    </script>
+
+	</body>
+</html>
