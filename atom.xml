@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://myqaq.cn/"/>
-  <updated>2019-03-02T14:00:38.893Z</updated>
+  <updated>2019-03-22T03:30:07.435Z</updated>
   <id>http://myqaq.cn/</id>
   
   <author>
@@ -15,6 +15,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基因芯片分析</title>
+    <link href="http://myqaq.cn/2019/03/22/gene-chip/"/>
+    <id>http://myqaq.cn/2019/03/22/gene-chip/</id>
+    <published>2019-03-22T03:21:43.000Z</published>
+    <updated>2019-03-22T03:30:07.435Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="生物信息" scheme="http://myqaq.cn/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>R语言线性回归总结</title>
