@@ -27,7 +27,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;基因芯片分析是生物信息学的重要应用之一，今天总结其中一种简单的使用方法。&lt;br&gt;
+      &lt;p&gt;基因芯片分析是生物信息学的重要应用之一，今天总结其中一种简单的使用方法。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -96,9 +96,9 @@
     </summary>
     
     
-      <category term="markdown" scheme="http://myqaq.cn/tags/markdown/"/>
-    
       <category term="个人博客" scheme="http://myqaq.cn/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="markdown" scheme="http://myqaq.cn/tags/markdown/"/>
     
   </entry>
   
@@ -113,7 +113,7 @@
     
     <summary type="html">
     
-      &lt;p&gt; 这是我在Hexo发出的第一篇博客&lt;br&gt;
+      &lt;p&gt; 这是我在Hexo发出的第一篇博客&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
