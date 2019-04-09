@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://myqaq.cn/"/>
-  <updated>2019-04-04T03:03:44.356Z</updated>
+  <updated>2019-04-09T05:35:45.021Z</updated>
   <id>http://myqaq.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用的Windows优秀软件</title>
+    <link href="http://myqaq.cn/2019/04/08/easy-windows/"/>
+    <id>http://myqaq.cn/2019/04/08/easy-windows/</id>
+    <published>2019-04-08T09:21:43.000Z</published>
+    <updated>2019-04-09T05:35:45.021Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近看了不少知乎关于Windows优秀软件的文章，结合一些自己发现的软件水一篇<br><a id="more"></a></p><h3 id="Everything"><a href="#Everything" class="headerlink" title="Everything"></a>Everything</h3><p><a href="https://www.voidtools.com/zh-cn/" target="_blank" rel="noopener">https://www.voidtools.com/zh-cn/</a><br>一款快速搜索本地文件的软件。众所周知，Windows自带的文件搜索慢到令人发指，Everything很好的解决了这一问题，全新安装的 Windows 10 (大约 120,000 个文件) 仅需 1 秒即可索引完成。<br><img src="/2019/04/08/easy-windows/everything.png"></p><h3 id="火萤酱"><a href="#火萤酱" class="headerlink" title="火萤酱"></a>火萤酱</h3><p><a href="https://j.huoying666.com/" target="_blank" rel="noopener">https://j.huoying666.com/</a><br>包含了本地检索、网络检索以及各类提升办公效率的小程序。<br>双击Ctrl，弹出检索框，用户可快速检索本地含有相应字段的所有文件；单击Tab，切换为网络检索功能，用户输入相应字段后，检索结果内会出现所有主流的搜索网站。<br><img src="/2019/04/08/easy-windows/huoyingjiang.png"></p><h3 id="CCleaner"><a href="#CCleaner" class="headerlink" title="CCleaner"></a>CCleaner</h3><p><a href="https://www.ccleaner.com/" target="_blank" rel="noopener">https://www.ccleaner.com/</a><br>摆脱各全家桶后的首选清理软件。<br>体积小，运行速度极快，可以对文件夹、历史记录、回收站等进行垃圾清理，并可对注册表进行垃圾项扫描、清理。附带软件卸载功能。 同时支持IE、Firefox。免费使用，不含任何间谍软件和垃圾程序。支持包括简体中文在内的26国语言界面。</p><h3 id="Snipaste"><a href="#Snipaste" class="headerlink" title="Snipaste"></a>Snipaste</h3><p><a href="https://www.snipaste.com/" target="_blank" rel="noopener">https://www.snipaste.com/</a><br>远胜Windows自带截图功能的轻量级截图软件。可自设使用快捷键，支持图片另存为、剪贴板以及简单的标注。<br><img src="/2019/04/08/easy-windows/Snipaste.png"></p><h3 id="potplayer"><a href="#potplayer" class="headerlink" title="potplayer"></a>potplayer</h3><p>potplayer是一款很好用的轻量级播放器。可以完美运行RMVB MKV AVI TP TS FLV MP3 MP4等格式，可外置独立字幕。此外，potplayer直接带了书签功能，且可以自动保存书签到视频文件夹。<br><img src="/2019/04/08/easy-windows/potplayer.png"></p><h3 id="IDM"><a href="#IDM" class="headerlink" title="IDM"></a>IDM</h3><p><a href="http://www.internetdownloadmanager.com/" target="_blank" rel="noopener">http://www.internetdownloadmanager.com/</a><br>最好的下载软件不解释，支持chrome、firefox插件功能。<br><img src="/2019/04/08/easy-windows/idm.png"></p><h3 id="seer"><a href="#seer" class="headerlink" title="seer"></a>seer</h3><p><a href="http://www.internetdownloadmanager.com/" target="_blank" rel="noopener">http://www.internetdownloadmanager.com/</a><br>文件预览软件。速度比Windows自带的文件预览快，选中后按空格键预览，支持图片、视频、office文件预览。<br><img src="/2019/04/08/easy-windows/seer.png"></p><h3 id="7-zip"><a href="#7-zip" class="headerlink" title="7-zip"></a>7-zip</h3><p>好用的压缩/解压软件，压缩倍数高，速度快。<br><img src="/2019/04/08/easy-windows/7zip.png"></p><h3 id="chrome浏览器"><a href="#chrome浏览器" class="headerlink" title="chrome浏览器"></a>chrome浏览器</h3><p>一款快速、安全且免费的网络浏览器,能很好地满足新型网站对浏览器的要求。各种插件能将你牢牢捆绑在这里。<br><img src="/2019/04/08/easy-windows/chrome.png"></p><p>分享链接<br><a href="https://pan.baidu.com/s/1Q-Bebps_6RF3DB1Kv4xxCA" target="_blank" rel="noopener">https://pan.baidu.com/s/1Q-Bebps_6RF3DB1Kv4xxCA</a><br>提取码：vr89 </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近看了不少知乎关于Windows优秀软件的文章，结合一些自己发现的软件水一篇&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="我的博客" scheme="http://myqaq.cn/tags/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="软件介绍" scheme="http://myqaq.cn/tags/%E8%BD%AF%E4%BB%B6%E4%BB%8B%E7%BB%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux Ubuntu操作汇总</title>
@@ -118,9 +140,9 @@
     </summary>
     
     
-      <category term="markdown" scheme="http://myqaq.cn/tags/markdown/"/>
-    
       <category term="个人博客" scheme="http://myqaq.cn/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="markdown" scheme="http://myqaq.cn/tags/markdown/"/>
     
   </entry>
   

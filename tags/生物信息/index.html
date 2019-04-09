@@ -180,7 +180,7 @@
         
             <a href="/2019/03/22/gene-chip/">
                 <div class="postShorten-thumbnailimg">
-                    <img alt="" src="http://myqaq.cn/2019/03/22/gene-chip/undeath.jpg">
+                    <img alt src="http://myqaq.cn/2019/03/22/gene-chip/undeath.jpg">
                 </div>
             </a>
             
@@ -265,36 +265,44 @@
 
 
 
-    </body>
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>
-<script type="text/javascript">
-    /* 鼠标特效 */
-    var a_idx = 0;
-    jQuery(document).ready(function($) {
-       $("body").click(function(e) {
-           var a = new Array("有伤害人的人存在的话，也会有能抚慰伤痕的人","隐约雷鸣,阴霾天空,但盼风雨来,能留你在此","全世界会有两万个人是你一见到她就会爱上她的，可你也许一辈子都遇不到一个","曾经发生过的事情不可能忘记，只不过是想不起而已","希望你可以记住我，记住我这样活过，这样在你身边呆过","堕入黑暗裏的可怜影子啊，停止伤害他人的行为吧，犯下罪行的灵魂……想死一次么","不管是怎样的回忆，都是我们活过的人生","我并没有找到真爱，但并不代表它不存在","所谓的奇迹就是要发生之后才会有价值存在的吧","想要成为无论多么悲伤的时候，也能够漂亮微笑的人吧","只要有人追忆，往事就不必如烟","浅情终似，行云无定，犹到梦魂中","与众不同的生活方式很累人呢，因为找不到借口","铁甲依旧在");
-           var $i = $("<span/>").text(a[a_idx]);
-           a_idx = (a_idx + 1) % a.length;
-           var x = e.pageX,
-           y = e.pageY;
-           $i.css({
-               "z-index": 999999999999,
-               "top": y - 20,
-               "left": x,
-               "position": "absolute",
-               "font-weight": "bold",
-               "color": "#82D900"
-           });
-           $("body").append($i);
-           $i.animate({
-               "top": y - 180,
-               "opacity": 0
-           },
-           2500,
-           function() {
-               $i.remove();
-           });
-       });
+<!-- <script type="text/javascript">
+var system ={};  
+var p = navigator.platform;       
+system.win = p.indexOf("Win") == 0;  
+system.mac = p.indexOf("Mac") == 0;  
+system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);     
+if(system.win||system.mac||system.xll){//如果是电脑跳转到
+  /* 鼠标特效 */
+  var a_idx = 0;
+  jQuery(document).ready(function($) {
+     $("body").click(function(e) {
+         var a = new Array("隐约雷鸣,阴霾天空","但盼风雨来,能留你在此","全世界会有两万个人是你一见到她就会爱上她的","可你也许一辈子都遇不到一个","这样在你身边呆过","我并没有找到真爱","但并不代表它不存在","只要有人追忆","往事就不必如烟","与众不同的生活方式很累人呢","因为找不到借口");
+         var $i = $("<span/>").text(a[a_idx]);
+         a_idx = (a_idx + 1) % a.length;
+         var x = e.pageX,
+         y = e.pageY;
+         $i.css({
+             "z-index": 999999999999,
+             "top": y - 20,
+             "left": x,
+             "position": "absolute",
+             "font-weight": "bold",
+             "color": "#82D900"
+         });
+         $("body").append($i);
+         $i.animate({
+             "top": y - 150,
+             "opacity": 0
+         },
+         1500,
+         function() {
+             $i.remove();
+         });
+     });
     });
-</script>
+       }
+    
+</script> -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
